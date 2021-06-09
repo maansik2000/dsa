@@ -1,6 +1,11 @@
 {
     "files.associations": {
         "*.py": "python",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "utility": "cpp",
+        "exception": "cpp",
+        "memory": "cpp",
+        "xstring": "cpp",
+        "ostream": "cpp"
     }
 }
