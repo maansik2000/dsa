@@ -1,93 +1,99 @@
 #include<iostream>
-#include<cstring>
+#include<cmath>
 using namespace std;
 
-//sum till n
-int sum(int n){
+//recursion
+
+
+//sum till n using recursion
+int SumTillN(int n){
     if(n==0){
         return 0;
     }
-    int prev = sum(n-1);
-    return n + prev;
+    int prevSum = SumTillN(n-1);
+    return n + prevSum;
 }
 
-//power of n
-int power(int n,int p){
-    if(p==0){
+
+//calculate n raised to power of n
+int PowerOfN(int n, int p){
+    if(p == 0){
         return 1;
     }
-    int prev = power(n,p-1);
-    return n*prev;
+    int PrevPower = PowerOfN(n,p-1);
+    return n*PrevPower;
 }
 
-//factorial
+
+//factorial of number using recursion
 int factorial(int n){
-    if(n==0){
+    if(n == 1){
         return 1;
     }
-    int prev = factorial(n-1);
-    return n*prev;
+    int prevFact = factorial(n-1);
+
+    return n*prevFact;
 }
 
-//fibonacci
-int fibonacci(int n){
-    if(n==0 || n==1){
+//nth Fibonacci number
+int fib(int n){
+    //base case
+    if(n == 1 || n == 0){ 
         return n;
     }
-
-    return fibonacci(n-1) + fibonacci(n-2);
+    return fib(n-1) + fib(n-2);
 }
+
 
 //check if an array is sorted or not
-bool sorted(int arr[],int n){
-
-    if(n==1){
+bool sorted(int arr[], int n){
+    if(n == 1){
         return true;
     }
-
     bool restArray = sorted(arr+1, n-1);
-    if(arr[0] <arr[1] && restArray){
-        return  true;
-    }
-    else{
-        return false;
-    }
+    return arr[0] < arr[1] && restArray;
 }
 
-//print number in decreasing number
+
+//print number in decreasing order
 void dec(int n){
-    if(n==0){
+    if(n == 1){
+        cout<<"1"<<" ";
         return;
     }
-    cout<<n<<endl;
+    cout<<n<<" ";
     dec(n-1);
 }
 
-//print number in increasing order
+
+// print number in increasing order
 void inc(int n){
-    if(n==1){
-        cout<<"1"<<endl;
+    if(n == 1){
+        cout<<"1"<<" ";
+        return ;
     }
     inc(n-1);
-    cout<<n<<endl;
+    cout<<n<<" ";
 }
 
-//first and last occurence of a number in a array
-int firstocc(int arr[], int n, int i, int key){
-    if(i == n){
+
+//first and last occurence of a number in a array(searching)
+int firstOcc(int arr[], int n, int i, int key){
+    if(i == n ){
         return -1;
     }
     if(arr[i] == key){
         return i;
     }
-    return firstocc(arr, n, i+1, key);
+    return firstOcc(arr, n, i+1, key);
 }
 
-//last occurence of a number in a array
-int lastocc(int arr[], int n, int i, int key){
-    int restarr = lastocc(arr,n,i+1, key);
-    if(restarr != -1){
-        return restarr;
+//first and last occurence of a number in a array(searching)
+int lastOcc(int arr[], int n, int i, int key){
+
+    int restArray = lastOcc(arr, n,i+1, key);
+    if(restArray != -1){
+        return restArray;
     }
     if(arr[i] == key){
         return i;
@@ -95,10 +101,11 @@ int lastocc(int arr[], int n, int i, int key){
     return -1;
 }
 
-//reverse a string
+
+//reverse a string using recursion
 void reverse(string s){
     if(s.length() == 0){
-        return;
+        return ;
     }
 
     string ros = s.substr(1);
@@ -107,69 +114,42 @@ void reverse(string s){
 }
 
 //replace pi with 3.14
-void replacepi(string s){
+void replace(string s){
     if(s.length() == 0){
-        return;
-    }
-    if(s[0] == 'p' && s[1] == 'i'){
-        cout<<3.14;
-        replacepi(s.substr(2));
-    }else{
-        cout<<s[0];
-        replacepi(s.substr(1));
-    }
-}
-
-//remove duplicates
-string remove(string s){
-    if(s.length()==0){
-        return "";
-    }
-    char ch=s[0];
-    string ans = remove(s.substr(1));
-    if(ch == ans[0]){
-        return ans;
-    }
-    return ch+ans;
-}
-
-//move x to end
-string move(string s){
-    if(s.length() == 0){
-        return "";
-    }
-    char ch = s[0];
-    string ans = move(s.substr(1));
-
-    if(ch == 'x'){
-        return ans+ch;
-    }
-    return ch+ans;
-}
-
-//generate substring
-void subseq(string str , string ans){
-    if(str.length() == 0){
-        cout<<ans<<endl;
-        return;
-    }
-    char ch = str[0];
-    string ros = str.substr(1);
-    subseq(ros,ans);
-    subseq(ros,ans+ch);
-}
-
-void dec1(int n){
-    if(n == 1){
-        cout<<1<<endl;
         return ;
     }
-    cout<<n<<endl;
-    dec1(n-1);
-    cout<<n<<endl;
-}
 
-int main(){
-    dec1(5);
+    if(s[0] == 'p' && s[1] == 'i'){
+        cout<<"3.14";
+        string ros = s.substr(2);
+        replace(ros);
+    }else{
+        cout<<s[0];
+        replace(s.substr(1));
+    }
+}
+ 
+int main(){ 
+    int n, p;
+    cin>>n>>p;
+    int arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    string str ="Avinash";
+
+
+    SumTillN(n);
+    cout<<PowerOfN(n,p);
+    cout<<factorial(n);
+    cout<<fib(n);
+    cout<<sorted(arr, n);
+    dec(n);
+    inc(n);
+    cout<<firstOcc(arr, n, 0, p);
+    cout<<lastOcc(arr, n, 0, p);
+    reverse(str);
+    replace("pipiasdfsadfpipi");
+    
     return 0;
-} 
+}
