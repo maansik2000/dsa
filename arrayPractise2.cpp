@@ -91,7 +91,7 @@ int maxSubArraySum1(int arr[], int size)
     return max_so_far;
 } 
 
-
+//kaden's algo
 void kadensAlgo(int arr[],int n){
     int curr_sum = 0;
     int max_sum = INT_MIN;
@@ -107,6 +107,8 @@ void kadensAlgo(int arr[],int n){
     cout<<max_sum<<endl;
 }
 
+
+//pair sum
 bool pairsum(int arr[], int n, int k){ 
     for(int i=0;i<n-1;i++){
         for(int j=i+1;j<n;j++){
@@ -119,6 +121,8 @@ bool pairsum(int arr[], int n, int k){
     return false;
 }
 
+
+//pair sum2
 bool pairsum2(int arr[], int n, int k){
     int low = 0;
     int high = n-1;
@@ -137,6 +141,8 @@ bool pairsum2(int arr[], int n, int k){
     return false;
 }
 
+
+//palindrome
 void palindrome(char str[])
 {
     // Start from leftmost and rightmost corners of str

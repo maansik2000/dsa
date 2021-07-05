@@ -1,5 +1,3 @@
-//simple tree program
-
 #include<iostream>
 using namespace std;
 

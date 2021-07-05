@@ -24,18 +24,12 @@ node* createNode(int data){
 }
 
 //function to insert element in binary tree
-
 node* Insertnode(node* root, int data)
 {
-    // If the tree is empty, assign new node address to root
     if (root == NULL) {
         root = createNode(data);
         return root;
     }
- 
-    // Else, do level order traversal until we find an empty
-    // place, i.e. either left child or right child of some
-    // node is pointing to NULL.
     queue<node*> q;
     q.push(root);
  
@@ -60,7 +54,6 @@ node* Insertnode(node* root, int data)
 }
 
 /* Inorder traversal of a binary tree */
- 
 void inorder(node* temp)
 {
     if (temp == NULL)
