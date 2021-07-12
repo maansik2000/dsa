@@ -38,7 +38,7 @@ void iterativePreorder(node* root){
         }
 
         if(node -> left){
-            s.push(node -> left);-
+            s.push(node -> left);
         }
     }
 

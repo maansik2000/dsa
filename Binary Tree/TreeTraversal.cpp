@@ -1,4 +1,5 @@
 #include<iostream>
+#include<queue>
 using namespace std;
 
 class node{
@@ -25,7 +26,7 @@ void printInorder(node* root){
     printInorder(root -> right);
 }
 
-
+//preorder
 void printPreorder(node* root){
     if(root == NULL){
         return ;
@@ -36,6 +37,8 @@ void printPreorder(node* root){
     printPreorder(root -> right);
 }
 
+
+//postorder
 void printPostorder(node* root){
     if(root == NULL){
         return ;
@@ -45,6 +48,44 @@ void printPostorder(node* root){
     printPostorder(root -> right);
     cout<<root -> data;
 }
+
+//level order traversal
+void printLevelOrder(node* root){
+    if(root == NULL){
+        return ;
+    }
+
+    queue<node*> q;
+    q.push(root);
+    q.push(NULL);
+
+    while(!q.empty()){
+        node* node = q.front();
+        q.pop();
+        if(node != NULL){
+            cout<<node->data<<" ";
+            if(node -> left){
+            q.push(node -> left);
+            }
+            if(node -> right){
+            q.push(node -> right);
+            }
+        }
+        else if(!q.empty()){
+            q.push(NULL);
+        }
+        
+    }
+}
+
+
+void printLevelOrder2(node* root){
+    if(root == NULL){
+        return ;
+    }
+    
+}
+
 int main() 
 { 
     node* root = new node(1); 
@@ -61,6 +102,8 @@ int main()
   
     cout << "\nPostorder traversal of binary tree is \n"; 
     printPostorder(root); 
-  
+    
+    cout<<"\nLevel order traversal is \n";
+    printLevelOrder(root);
     return 0; 
 } 

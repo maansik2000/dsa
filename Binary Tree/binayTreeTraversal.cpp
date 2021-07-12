@@ -5,8 +5,8 @@ using namespace std;
 class node{
     public:
         int data;
-        node* left;
-        node* right;
+        node* left ;
+        node* right ;
 };
 
 //function to create a new node
