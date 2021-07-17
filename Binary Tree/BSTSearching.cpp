@@ -12,42 +12,28 @@ class node{
     }
 };
 
-//searching in binary tree
+//searching
+node* searchInBst(node* root, int key){
 
-bool ifNodeExist(node* root, int key){
     if(root == NULL){
-        return false;
+        return NULL;
     }
 
     if(root -> data == key){
-        return key;
-    }
-
-    bool res1 = ifNodeExist(root -> left, key);
-
-    if(res1) return true;
-
-    bool res2 = ifNodeExist(root -> right, key);
-    return res2;
-}
-
-//searching in bst
-node* search(node* root, int key){
-    if(root == NULL || root -> data == key){
         return root;
     }
 
-    if(root -> data < key){
-        return search(root ->right, key);
+    if(root -> data > key){
+        return searchInBst(root -> left, key);
     }
-    
-    return search(root -> left, key);
+
+    return searchInBst( root -> right, key);
 }
 
 
 int main()
-{
-    node* root = new node(0);
+{   
+    node* root = new node(12);
     root->left = new node(1);
     root->left->left = new node(3);
     root->left->left->left = new node(7);
@@ -57,16 +43,17 @@ int main()
     root->right = new node(2);
     root->right->left = new node(5);
     root->right->right = new node(6);
- 
-    int key = 4;
- 
-    if (ifNodeExist(root, key))
-        cout << "YES";
-    else
-        cout << "NO";
 
-    node* result = search(root, key);
-    cout<<result<<endl;
+    
+ 
+    int key = 10;
+
+    if(searchInBst(root, key) == NULL){
+        cout<<"key doesn't exist"<<endl;
+    }else{
+        cout<<"key exist in tree"<<endl;
+    }
+
  
     return 0;
 }

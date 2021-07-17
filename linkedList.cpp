@@ -174,7 +174,7 @@ void removeCycle(node* &head){
 
     do{
         slow = slow -> next;
-        fast = fast -> next -> next;8+
+        fast = fast -> next -> next;
         
     }while(slow != fast);
 
