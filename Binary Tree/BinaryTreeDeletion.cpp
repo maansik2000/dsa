@@ -1,16 +1,12 @@
 #include <bits/stdc++.h> 
 using namespace std; 
   
-/* A binary tree node has key, pointer to left  
-child and a pointer to right child */
 class node { 
     public:
     int key; 
     node *left, *right; 
 }; 
   
-/* function to create a new node of tree and  
-return pointer */
 node* createNode(int key) 
 { 
     node* temp = new node; 
@@ -86,8 +82,7 @@ node* deletion(node* root, int key)
     node* temp; 
     node* key_node = NULL; 
   
-    // Do level order traversal to find deepest 
-    // node(temp) and node to be deleted (key_node) 
+
     while (!q.empty()) { 
         temp = q.front(); 
         q.pop(); 

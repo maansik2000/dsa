@@ -14,6 +14,8 @@ vi adL[N];
 
 int main(){
     int n,m;
+
+    //adjency matrix
     // cin>>n>>m;
 
     // vvi adjm(n+1, vi(n+1, 0));

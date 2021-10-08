@@ -38,7 +38,7 @@ void bubbleSort(int arr[], int n){
 }
 
 //insertion sort
-/* complexity : best = Ω(n log(n)), average = θ(n log(n)), worst = O(n log(n))	*/
+/* complexity : best = Ω(n log(n)), average = θ(mn), worst = O(n log(n))	*/
 void insertionSort(int arr[], int n){
     for (int i = 1; i < n; i++)
     {
